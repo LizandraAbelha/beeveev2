@@ -1,0 +1,35 @@
+<h2>Cadastro de Aluno</h2>
+
+<form (ngSubmit)="enviarCadastro()">
+ 
+  <div class="form-group">
+    <label for="nome">Nome Completo:</label>
+    <input id="nome" type="text" [(ngModel)]="aluno.nome" name="nome" required class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="cpf">CPF:</label>
+    <input id="cpf" type="text" [(ngModel)]="aluno.cpf" name="cpf" required class="form-control" placeholder="000.000.000-00">
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-mail:</label>
+    <input id="email" type="email" [(ngModel)]="aluno.email" name="email" required class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="login">Login:</label>
+    <input id="login" type="text" [(ngModel)]="aluno.login" name="login" required class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="senha">Senha:</label>
+    <input id="senha" type="password" [(ngModel)]="aluno.senha" name="senha" required class="form-control">
+  </div>
+
+
+  <div class="form-buttons">
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <button type="button" class="btn btn-secondary" (click)="limparFormulario()">Cancelar</button>
+  </div>
+</form>
