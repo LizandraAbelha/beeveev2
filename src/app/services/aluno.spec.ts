@@ -1,18 +1,46 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Aluno } from '../models/aluno'; 
-import { Observable } from 'rxjs';
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-@Injectable({
-  providedIn: 'root' 
-})
-export class AlunoService {
+import { AlunoService } from './aluno.service';
+import { Aluno } from '../models/Aluno';
 
-  private apiUrl = 'http://localhost:8080/alunos'; 
+describe('AlunoService', () => {
+  let service: AlunoService;
+  let httpMock: HttpTestingController;
 
-  constructor(private http: HttpClient) {}
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [AlunoService]
+    });
 
-  cadastrarAluno(aluno: Aluno): Observable<Aluno> {
-    return this.http.post<Aluno>(this.apiUrl, aluno);
-  }
-}
+    service = TestBed.inject(AlunoService);
+    httpMock = TestBed.inject(HttpTestingController);
+  });
+
+  afterEach(() => {
+    httpMock.verify();
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('should POST aluno data', () => {
+    const mockAluno: Aluno = {
+      nome: 'João',
+      cpf: '12345678900',
+      email: 'joao@email.com',
+      login: 'joaologin',
+      senha: '123456'
+    };
+
+    service.cadastrarAluno(mockAluno).subscribe((response) => {
+      expect(response).toEqual(mockAluno);
+    });
+
+    const req = httpMock.expectOne('http://localhost:8080/alunos');
+    expect(req.request.method).toBe('POST');
+    req.flush(mockAluno); // resposta simulada
+  });
+});

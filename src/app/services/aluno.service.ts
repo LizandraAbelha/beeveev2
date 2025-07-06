@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';  
-import { Aluno } from '../models/aluno';            
+import { Aluno } from '../models/Aluno';            
 import { Observable } from 'rxjs';
 
 @Injectable({

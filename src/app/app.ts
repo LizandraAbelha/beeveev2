@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { CadastroUsuario } from './cadastro-usuario/cadastro-usuario'; 
+import { CadastroUsuarioComponent } from './cadastro-usuario.component/cadastro-usuario.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CadastroUsuario],
+  imports: [CadastroUsuarioComponent],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
