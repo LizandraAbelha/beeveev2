@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';  
-import { Aluno } from '../models/Aluno';            
+import { Aluno, NovoAluno } from '../models/Aluno';            
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,12 @@ export class AlunoService {
 
   constructor(private http: HttpClient) {}  
 
-  cadastrarAluno(aluno: Aluno): Observable<Aluno> {
+  cadastrarAluno(aluno: Partial<Aluno>): Observable<Aluno> {
     return this.http.post<Aluno>(this.url, aluno);  
   }
+
+    getAlunos(): Observable<Aluno[]> {
+    return this.http.get<Aluno[]>(this.url);
+  }
 }
+

@@ -41,6 +41,6 @@ describe('AlunoService', () => {
 
     const req = httpMock.expectOne('http://localhost:8080/alunos');
     expect(req.request.method).toBe('POST');
-    req.flush(mockAluno); // resposta simulada
+    req.flush(mockAluno); 
   });
 });
