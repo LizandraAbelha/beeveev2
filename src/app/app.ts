@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { CadastroUsuarioComponent } from './cadastro-usuario.component/cadastro-usuario.component';
-
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CadastroUsuarioComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
-export class App {}
+export class AppComponent {}

@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h4>Cadastro de Usuário</h4>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="enviarCadastro()" #form="ngForm">
+        <div class="mb-3">
+          <label class="form-label">Nome</label>
+          <input type="text" class="form-control" [(ngModel)]="aluno.nome" name="nome" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">CPF</label>
+          <input type="text" class="form-control" [(ngModel)]="aluno.cpf" name="cpf" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" [(ngModel)]="aluno.email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Login</label>
+          <input type="text" class="form-control" [(ngModel)]="aluno.login" name="login" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Senha</label>
+          <input type="password" class="form-control" [(ngModel)]="aluno.senha" name="senha" required>
+        </div>
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h5>Usuários cadastrados</h5>
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>Email</th>
+          <th>Login</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let aluno of alunosCadastrados">
+          <td>{{ aluno.nome }}</td>
+          <td>{{ aluno.cpf }}</td>
+          <td>{{ aluno.email }}</td>
+          <td>{{ aluno.login }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
