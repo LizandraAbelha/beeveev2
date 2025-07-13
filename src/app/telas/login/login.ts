@@ -21,12 +21,15 @@ export class Login {
   login() {
     this.alunoService.login(this.nome, this.senha).subscribe({
       next: (res) => {
-        // Supondo que o backend retorne algo indicando sucesso, aí redireciona para a tela de usuário
         this.router.navigate(['/usuario']);
       },
       error: (err) => {
         this.mensagemErro = 'Nome ou senha inválidos';
       },
     });
+  }
+
+  irParaCadastro() {
+    this.router.navigate(['/cadastro']);
   }
 }
